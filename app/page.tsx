@@ -101,44 +101,48 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="bg-blue-600 text-white px-4 py-20 lg:py-32">
+      <section id="home" className="bg-gradient-to-b from-blue-700 to-blue-600 text-white px-4 py-20 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <div className="inline-block bg-yellow-400 text-gray-900 px-4 py-2 rounded text-sm font-bold mb-6">
-              ✓ NTSA APPROVED DRIVING SCHOOL
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-yellow-400 text-gray-900 px-6 py-3 rounded-full text-sm font-bold mb-8 shadow-lg">
+              ✓ NTSA APPROVED • 98% PASS RATE • 15+ LOCATIONS
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              Learn to Drive with <span className="text-yellow-300">Fesko</span> Driving School
+            <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+              Get Your Kenyan<br />Driving License <span className="text-yellow-300">Fast</span>
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-              Get your Kenyan driving license fast. NTSA-certified instructors, modern training cars, and 98% pass rate.
+            <p className="text-xl lg:text-3xl mb-12 max-w-4xl mx-auto opacity-95 font-medium">
+              NTSA-certified instructors • Modern training cars • Flexible schedules • Affordable prices
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-yellow-400 text-gray-900 hover:bg-yellow-300 text-lg px-8">
-                Book Your First Lesson - KES 500
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+              <Button size="lg" className="bg-yellow-400 text-gray-900 hover:bg-yellow-300 text-xl px-12 py-4 font-bold shadow-xl transform hover:scale-105 transition-all">
+                Book First Lesson - KES 500
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-700 text-xl px-12 py-4 font-semibold transition-all">
                 Call +254 712 345 678
               </Button>
             </div>
             
-            {/* Quick Info */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold">21 Days</div>
-                <div className="text-sm">Average Course Duration</div>
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20">
+                <div className="text-3xl font-black mb-2">21</div>
+                <div className="text-sm font-medium">Days to License</div>
+                <div className="text-xs opacity-80 mt-1">Average Duration</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold">NTSA</div>
-                <div className="text-sm">Certified Instructors</div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20">
+                <div className="text-3xl font-black mb-2">NTSA</div>
+                <div className="text-sm font-medium">Certified</div>
+                <div className="text-xs opacity-80 mt-1">All Instructors</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold">98%</div>
-                <div className="text-sm">First-Time Pass Rate</div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20">
+                <div className="text-3xl font-black mb-2">98%</div>
+                <div className="text-sm font-medium">Pass Rate</div>
+                <div className="text-xs opacity-80 mt-1">First Time</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold">15+</div>
-                <div className="text-sm">Training Locations</div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20">
+                <div className="text-3xl font-black mb-2">5000+</div>
+                <div className="text-sm font-medium">Students</div>
+                <div className="text-xs opacity-80 mt-1">Successfully Trained</div>
               </div>
             </div>
           </div>
