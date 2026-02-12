@@ -7,9 +7,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone, Award, CheckCircle2, Star, Target, ShieldCheck, Car, Users, GraduationCap, Briefcase, Mail, MapPin, ChevronRight, PlayCircle, Clock, Zap, Smartphone } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { EnrollmentModal } from '@/components/enrollment-modal'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', program: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -35,7 +37,7 @@ export default function Home() {
   return (
     <div className="min-h-screen mesh-gradient selection:bg-primary selection:text-white">
       {/* Dynamic Top Bar */}
-      <div className="bg-gray-950/90 backdrop-blur-sm text-white/60 px-6 py-2.5 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase border-b border-white/5 relative z-[60]">
+      <div className="bg-gray-950/90 backdrop-blur-sm text-white/60 px-6 py-2.5 label-sm relative z-[60]">
         <div className="mx-auto max-w-7xl flex justify-between items-center">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 group cursor-default">
@@ -66,8 +68,8 @@ export default function Home() {
                 <span className="relative z-10">F</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-black tracking-[-0.03em] text-gray-950 font-heading leading-tight uppercase">Fesko</span>
-                <span className="text-[8px] uppercase tracking-[0.3em] font-black text-primary/60 leading-none">Elite Academy</span>
+                <span className="text-[15px] font-black tracking-[-0.03em] text-gray-950 font-heading leading-tight uppercase">Fesko</span>
+                <span className="label-xs text-primary/60">Elite Academy</span>
               </div>
             </Link>
 
@@ -77,7 +79,7 @@ export default function Home() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-500 hover:text-gray-950 font-black text-[11px] tracking-[0.15em] uppercase transition-all relative group"
+                  className="text-gray-500 hover:text-gray-950 label-sm transition-all relative group"
                 >
                   {item}
                   <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full group-hover:left-0" />
@@ -86,7 +88,11 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-4">
-              <Button size="sm" className="hidden sm:flex rounded-2xl h-10 px-7 bg-gray-900 text-white hover:bg-gray-800 transition-all font-black text-[10px] tracking-widest uppercase shadow-xl hover:translate-y-[-2px] active:translate-y-0">
+              <Button
+                onClick={() => setIsEnrollmentOpen(true)}
+                size="sm"
+                className="hidden sm:flex rounded-2xl h-10 px-7 bg-gray-900 text-white hover:bg-gray-800 transition-all label-sm shadow-xl hover:translate-y-[-2px] active:translate-y-0"
+              >
                 Enroll Now
               </Button>
               <Button
@@ -115,7 +121,10 @@ export default function Home() {
                   </a>
                 ))}
                 <div className="h-px bg-black/5 my-2 mx-6" />
-                <Button className="w-full h-14 rounded-2xl font-black text-[11px] tracking-widest uppercase bg-primary mb-2 shadow-2xl">
+                <Button
+                  onClick={() => setIsEnrollmentOpen(true)}
+                  className="w-full h-14 rounded-2xl font-black text-[11px] tracking-widest uppercase bg-primary mb-2 shadow-2xl"
+                >
                   Quick Registration
                 </Button>
               </div>
@@ -136,17 +145,21 @@ export default function Home() {
               </div>
 
               <div className="space-y-6">
-                <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black leading-[0.9] tracking-[-0.05em] text-gray-950 font-heading">
+                <h1 className="display-1 text-gray-950 font-heading">
                   THE FUTURE <br />
                   <span className="text-gradient">OF DRIVING.</span>
                 </h1>
-                <p className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed max-w-lg font-medium tracking-tight">
+                <p className="body-xl text-gray-500 max-w-lg">
                   Experience elite driving education redefined for the modern age. Where safety meets sophistication through certified Kenyan mentorship.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-5 pt-4">
-                <Button size="lg" className="h-16 px-10 rounded-[2rem] bg-primary text-white hover:bg-primary/90 font-black text-[11px] tracking-[0.2em] uppercase shadow-2xl shadow-primary/40 hover:scale-105 transition-all active:scale-95">
+                <Button
+                  onClick={() => setIsEnrollmentOpen(true)}
+                  size="lg"
+                  className="h-16 px-10 rounded-[2rem] bg-primary text-white hover:bg-primary/90 font-black text-[11px] tracking-[0.2em] uppercase shadow-2xl shadow-primary/40 hover:scale-105 transition-all active:scale-95"
+                >
                   Begin Journey <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
                 <div className="group flex items-center gap-4 cursor-pointer">
@@ -176,18 +189,18 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-5 relative w-full">
-              <div className="relative w-full h-[500px] lg:h-[650px] rounded-[3.5rem] overflow-hidden shadow-2xl group border-[8px] border-red-500 bg-gray-200">
+              <div className="relative w-full aspect-[3/4] min-h-[500px] lg:min-h-[600px] rounded-[3.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] group border-[12px] border-white/50 backdrop-blur-3xl bg-gray-100 animate-in fade-in zoom-in duration-1000 delay-200">
                 <Image
-                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200"
+                  src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=2000"
                   alt="Elite Driving Environment"
                   fill
                   unoptimized
-                  className="object-cover transition-all duration-[2s] group-hover:scale-110 group-hover:rotate-2"
+                  className="object-cover transition-all duration-[2s] group-hover:scale-110 group-hover:rotate-1"
                   priority
                 />
 
                 {/* Float Card - Overlay */}
-                <div className="absolute top-10 right-[-2rem] glass-card p-6 rounded-[2.5rem] border-white/20 shadow-3xl animate-bounce-slow z-20">
+                <div className="absolute top-10 right-4 lg:right-[-2rem] glass-card p-6 rounded-[2.5rem] border-white/20 shadow-3xl animate-bounce-slow z-20">
                   <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center text-white shadow-lg">
                       <Star className="h-5 w-5" fill="currentColor" />
@@ -231,13 +244,12 @@ export default function Home() {
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
             <div className="relative w-full">
-              <div className="relative w-full rounded-[3rem] overflow-hidden border-[8px] border-red-500 bg-gray-200">
-                <div className="bg-gray-200 relative h-[500px] w-full">
+              <div className="relative w-full rounded-[3rem] overflow-hidden shadow-2xl border-[6px] border-slate-50 bg-gray-50">
+                <div className="aspect-[4/5] bg-slate-50 relative min-h-[400px] w-full">
                   <Image
-                    src="https://images.unsplash.com/photo-1596484552979-3a139031ca92?w=1200"
+                    src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=2000"
                     alt="Elite Safety Training"
                     fill
-                    unoptimized
                     className="object-cover transition-all duration-[2s] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent z-10" />
@@ -257,14 +269,14 @@ export default function Home() {
 
             <div className="space-y-12 order-1 lg:order-2">
               <div className="space-y-6">
-                <div className="flex items-center gap-4 text-primary font-black uppercase tracking-[0.3em] text-[10px]">
+                <div className="flex items-center gap-4 text-primary label-sm">
                   <div className="h-0.5 w-10 bg-primary/20" />
                   Our Legacy
                 </div>
-                <h2 className="text-4xl lg:text-6xl font-black text-gray-950 leading-[0.95] tracking-[-0.04em] font-heading">
+                <h2 className="display-2 text-gray-950 font-heading">
                   CRAFTING <span className="text-primary italic">SAFE</span> <br />DRIVERS FOR LIFE.
                 </h2>
-                <p className="text-sm lg:text-base text-gray-500 leading-relaxed font-medium tracking-tight">
+                <p className="body-xl text-gray-500 max-w-lg">
                   We transcend basic test preparation. Our mission is to cultivate safety as a second nature, combining technical mastery with defensive wisdom.
                 </p>
               </div>
@@ -280,8 +292,8 @@ export default function Home() {
                       <item.icon className="h-6 w-6" />
                     </div>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-black text-gray-950 uppercase tracking-widest">{item.title}</h4>
-                      <p className="text-xs text-gray-400 font-medium leading-relaxed max-w-sm">{item.desc}</p>
+                      <h4 className="label-sm text-gray-950">{item.title}</h4>
+                      <p className="body-base text-gray-400 max-w-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -296,9 +308,9 @@ export default function Home() {
         <div className="absolute -z-10 top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0.02)_0%,transparent_70%)]" />
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 lg:mb-24 space-y-6">
-            <div className="text-primary font-black tracking-[0.4em] uppercase text-[10px] bg-primary/5 inline-block px-5 py-2 rounded-full">Elite Mentors</div>
-            <h2 className="text-4xl lg:text-7xl font-black text-gray-950 font-heading tracking-[-0.04em] leading-none uppercase">Learn from the <br /><span className="text-gradient">Champions.</span></h2>
-            <p className="text-sm text-gray-400 max-w-lg mx-auto font-medium tracking-tight">
+            <div className="text-primary label-sm bg-primary/5 inline-block px-5 py-2 rounded-full">Elite Mentors</div>
+            <h2 className="display-2 text-gray-950 font-heading">Learn from the <br /><span className="text-gradient">Champions.</span></h2>
+            <p className="body-lg text-gray-400 max-w-lg mx-auto">
               Our team consists of more than just teachers—they are dedicated safety advocates with decades of combined experience on Kenyan roads.
             </p>
           </div>
@@ -325,24 +337,23 @@ export default function Home() {
               },
             ].map((mentor, idx) => (
               <div key={idx} className="group relative w-full">
-                <div className="relative w-full h-[450px] rounded-[3rem] overflow-hidden mb-8 border-[8px] border-red-500 bg-gray-200">
+                <div className="relative w-full aspect-[3/4] min-h-[400px] rounded-[3rem] overflow-hidden mb-8 shadow-2xl border-[10px] border-white transition-all duration-700 hover:shadow-primary/5 hover:translate-y-[-10px] bg-white">
                   <Image
                     src={mentor.img}
                     alt={mentor.name}
                     fill
-                    unoptimized
-                    className="object-cover transition-all duration-[1.5s] group-hover:scale-105"
+                    className="object-cover transition-all duration-[1.5s] group-hover:scale-110"
                   />
                   {/* Floating Metadata Card */}
                   <div className="absolute inset-x-4 bottom-4 glass-card p-6 rounded-[2rem] border-white/40 shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10">
                     <div className="flex justify-between items-end">
                       <div>
-                        <div className="text-[10px] font-black text-primary uppercase tracking-widest mb-1">{mentor.role}</div>
-                        <div className="text-sm font-black text-gray-950 tracking-tight">{mentor.name}</div>
+                        <div className="label-xs text-primary mb-1">{mentor.role}</div>
+                        <div className="body-base font-black text-gray-950">{mentor.name}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">Experience</div>
-                        <div className="text-xs font-black text-gray-950">{mentor.exp}</div>
+                        <div className="label-xs text-gray-400 leading-none">Experience</div>
+                        <div className="body-base font-black text-gray-950">{mentor.exp}</div>
                       </div>
                     </div>
                   </div>
@@ -362,15 +373,15 @@ export default function Home() {
               <div className="h-16 w-16 bg-primary rounded-[2rem] flex items-center justify-center text-white shadow-3xl shadow-primary/20">
                 <Users className="h-8 w-8" />
               </div>
-              <h2 className="text-5xl lg:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] font-heading">
+              <h2 className="display-2 font-heading text-white">
                 SUCCESS <br />WITHOUT <span className="text-primary italic">FRONTIERS.</span>
               </h2>
-              <p className="text-sm lg:text-base text-white/40 font-medium leading-relaxed max-w-md tracking-tight">
+              <p className="body-lg text-white/40 max-w-md">
                 Over 5,000 students have transitioned from complete novices to confident, licensed drivers through Fesko's elite curriculum.
               </p>
 
               {/* Advanced Testimonial Card */}
-              <div className="glass-card p-10 rounded-[3rem] border-white/10 shadow-3xl group bg-white/[0.03]">
+              <div className="glass-card p-6 lg:p-10 rounded-[3rem] border-white/10 shadow-3xl group bg-white/[0.03]">
                 <div className="flex gap-1 mb-6 text-primary">
                   {[1, 2, 3, 4, 5].map(i => <Star key={i} className="h-4 w-4" fill="currentColor" />)}
                 </div>
@@ -382,8 +393,8 @@ export default function Home() {
                     <Image src="https://i.pravatar.cc/100?u=jon" alt="Alumni" fill unoptimized className="object-cover" />
                   </div>
                   <div>
-                    <div className="text-sm font-black text-white tracking-widest uppercase">Jonathan M.</div>
-                    <div className="text-[10px] font-black text-primary uppercase tracking-widest">Class B Graduate</div>
+                    <div className="body-base font-black text-white tracking-widest uppercase">Jonathan M.</div>
+                    <div className="label-xs text-primary">Class B Graduate</div>
                   </div>
                 </div>
               </div>
@@ -396,9 +407,9 @@ export default function Home() {
                 { label: 'Safety Rating', val: '99%' },
                 { label: 'Locations', val: '12+' }
               ].map((stat, i) => (
-                <div key={i} className="glass-card p-8 lg:p-12 rounded-[2.5rem] border-white/5 text-center transition-all duration-700 hover:border-primary/20 hover:bg-white/[0.05]">
-                  <div className="text-3xl lg:text-5xl font-black text-white tracking-tighter mb-2">{stat.val}</div>
-                  <div className="text-[9px] lg:text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">{stat.label}</div>
+                <div key={i} className="glass-card p-6 lg:p-12 rounded-[2.5rem] border-white/5 text-center transition-all duration-700 hover:border-primary/20 hover:bg-white/[0.05]">
+                  <div className="display-2 text-white italic">{stat.val}</div>
+                  <div className="label-xs text-white/30">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -411,9 +422,9 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 lg:mb-32 gap-10">
             <div className="space-y-6 max-w-2xl">
-              <div className="text-primary font-black tracking-[0.4em] uppercase text-[10px] bg-primary/5 inline-block px-5 py-2 rounded-full">Pro Curriculum</div>
-              <h2 className="text-4xl lg:text-7xl font-black text-gray-950 font-heading tracking-[-0.04em] leading-[0.9] uppercase">Professional <br /><span className="text-gradient">License Tracks.</span></h2>
-              <p className="text-sm lg:text-base text-gray-400 font-medium tracking-tight">
+              <div className="text-primary label-sm bg-primary/5 inline-block px-5 py-2 rounded-full">Pro Curriculum</div>
+              <h2 className="display-2 text-gray-950 font-heading">Professional <br /><span className="text-gradient">License Tracks.</span></h2>
+              <p className="body-lg text-gray-400">
                 Engineered for safety and absolute compliance. Each program is a blueprint for career excellence or personal mobility.
               </p>
             </div>
@@ -428,7 +439,7 @@ export default function Home() {
               { title: 'Class B - Auto', price: '16,000', time: '21 Working Days', icon: Zap, level: 'Specialist', desc: 'Focus on road awareness and safe navigation with automatic ease.' },
               { title: 'Commercial CDL', price: '22,500', time: '45 Working Days', icon: Briefcase, level: 'Mastery', desc: 'Advance your career with commercial certifications for heavy vehicles.' },
             ].map((course, idx) => (
-              <div key={idx} className="glass-card p-10 rounded-[3rem] border-gray-50 flex flex-col justify-between transition-all duration-700 hover:shadow-primary/5 hover:translate-y-[-12px] group relative overflow-hidden bg-white">
+              <div key={idx} className="glass-card p-6 lg:p-10 rounded-[3rem] border-gray-50 flex flex-col justify-between transition-all duration-700 hover:shadow-primary/5 hover:translate-y-[-12px] group relative overflow-hidden bg-white">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full translate-x-12 -translate-y-12 transition-transform duration-700 group-hover:scale-[3] group-hover:opacity-100 opacity-20" />
                 <div className="relative z-10 space-y-10">
                   <div className="flex justify-between items-start">
@@ -436,18 +447,21 @@ export default function Home() {
                       <course.icon className="h-7 w-7" />
                     </div>
                     <div className="text-right">
-                      <div className="text-[9px] font-black text-primary uppercase tracking-[0.2em] mb-1">{course.level}</div>
-                      <div className="text-lg font-black text-gray-950 tracking-tighter">KES {course.price}</div>
+                      <div className="label-xs text-primary mb-1">{course.level}</div>
+                      <div className="heading-2 text-gray-950">KES {course.price}</div>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-black text-gray-950 tracking-tight leading-none uppercase">{course.title}</h3>
-                    <p className="text-xs text-gray-400 font-medium leading-relaxed">{course.desc}</p>
-                    <div className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-widest py-2">
+                    <h3 className="heading-1 text-gray-950 uppercase">{course.title}</h3>
+                    <p className="body-base text-gray-400">{course.desc}</p>
+                    <div className="flex items-center gap-2 label-sm py-2">
                       <Clock className="h-3.5 w-3.5 text-primary" /> {course.time}
                     </div>
                   </div>
-                  <Button className="w-full h-14 rounded-[1.5rem] bg-gray-50 text-gray-950 hover:bg-primary hover:text-white font-black text-[10px] tracking-widest uppercase transition-all duration-500">
+                  <Button
+                    onClick={() => setIsEnrollmentOpen(true)}
+                    className="w-full h-14 rounded-[1.5rem] bg-gray-50 text-gray-950 hover:bg-primary hover:text-white font-black text-[10px] tracking-widest uppercase transition-all duration-500"
+                  >
                     Enroll Today
                   </Button>
                 </div>
@@ -505,17 +519,20 @@ export default function Home() {
           <div className="glass-card p-12 lg:p-24 rounded-[4rem] border-white/5 bg-white/[0.02] relative overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
-                <div className="inline-block px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">
+                <div className="inline-block px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-primary label-sm">
                   The Platinum Club
                 </div>
-                <h2 className="text-5xl lg:text-8xl font-black leading-[0.85] font-heading tracking-[-0.05em] uppercase">
+                <h2 className="display-1 text-white font-heading">
                   UNLIMITED <br /><span className="text-gradient">ACCESS.</span>
                 </h2>
-                <p className="text-white/40 text-sm lg:text-base font-medium leading-relaxed max-w-lg tracking-tight">
+                <p className="body-lg text-white/40 max-w-lg">
                   Join our elite membership program for priority booking, defensive driving masterclasses, and lifelong refresher benefits.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-5">
-                  <Button className="h-16 px-12 rounded-[2.5rem] bg-primary text-white hover:bg-primary/90 font-black text-[11px] uppercase tracking-[0.2em] shadow-3xl shadow-primary/40 transition-all active:scale-95">
+                  <Button
+                    onClick={() => setIsEnrollmentOpen(true)}
+                    className="h-16 px-12 rounded-[2.5rem] bg-primary text-white hover:bg-primary/90 font-black text-[11px] uppercase tracking-[0.2em] shadow-3xl shadow-primary/40 transition-all active:scale-95"
+                  >
                     Become a Member
                   </Button>
                   <Button variant="outline" className="h-16 px-12 rounded-[2.5rem] bg-transparent border-white/10 text-white hover:bg-white/5 font-black text-[11px] uppercase tracking-[0.2em] transition-all">
@@ -529,7 +546,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                   {/* Floating Micro Card */}
-                  <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-[2rem] border-white/10 animate-bounce-slow">
+                  <div className="absolute -bottom-6 -left-6 lg:bottom-[-1.5rem] lg:left-[-1.5rem] glass-card p-6 rounded-[2rem] border-white/10 animate-bounce-slow">
                     <Award className="h-10 w-10 text-primary mb-3" />
                     <div className="text-[10px] font-black text-white uppercase tracking-widest">Lifetime Validation</div>
                   </div>
@@ -546,11 +563,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div className="space-y-12">
               <div className="space-y-4">
-                <div className="text-primary font-bold tracking-[0.2em] uppercase text-[10px]">Contact Us</div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 leading-[1.2] font-heading tracking-tight">
+                <div className="text-primary label-sm">Contact Us</div>
+                <h2 className="heading-1 text-gray-900 font-heading">
                   Ready to Start Your <span className="text-primary italic">Journey?</span>
                 </h2>
-                <p className="text-sm sm:text-base text-gray-400 font-medium leading-relaxed max-w-lg">
+                <p className="body-lg text-gray-400 max-w-lg">
                   Have specific questions about our NTSA curriculum or class schedules? Our admissions team provides expert guidance for every student.
                 </p>
               </div>
@@ -651,8 +668,8 @@ export default function Home() {
                   F
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-lg font-black tracking-tight text-white font-heading leading-tight">FESKO</span>
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-primary leading-none">Driving School</span>
+                  <span className="heading-2 tracking-tight text-white leading-tight">FESKO</span>
+                  <span className="label-xs text-primary">Driving School</span>
                 </div>
               </Link>
               <p className="text-white/40 text-sm font-medium leading-relaxed">
@@ -672,7 +689,7 @@ export default function Home() {
               <ul className="space-y-4">
                 {['Home', 'About Us', 'Our Courses', 'Instructors', 'Contact'].map((link) => (
                   <li key={link}>
-                    <Link href="#" className="text-white/40 hover:text-white text-sm font-bold transition-colors flex items-center gap-2 group">
+                    <Link href="#" className="text-white/40 hover:text-white body-base transition-colors flex items-center gap-2 group">
                       <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                       {link}
                     </Link>
@@ -686,7 +703,7 @@ export default function Home() {
               <ul className="space-y-4">
                 {['Manual Training', 'Automatic Training', 'Commercial C1/D', 'Defensive Skills', 'Refresher'].map((link) => (
                   <li key={link}>
-                    <Link href="#" className="text-white/40 hover:text-white text-sm font-bold transition-colors flex items-center gap-2 group">
+                    <Link href="#" className="text-white/40 hover:text-white body-base transition-colors flex items-center gap-2 group">
                       <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                       {link}
                     </Link>
@@ -720,10 +737,10 @@ export default function Home() {
           </div>
 
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-[11px] font-bold text-white/20 uppercase tracking-widest">© 2025 Fesko Driving School. Elite Standards.</p>
+            <p className="label-xs text-white/20">© 2025 Fesko Driving School. Elite Standards.</p>
             <div className="flex gap-8">
-              <a href="#" className="text-[11px] font-bold text-white/20 hover:text-white transition-colors uppercase tracking-widest">Privacy</a>
-              <a href="#" className="text-[11px] font-bold text-white/20 hover:text-white transition-colors uppercase tracking-widest">Terms</a>
+              <a href="#" className="label-xs text-white/20 hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="label-xs text-white/20 hover:text-white transition-colors">Terms</a>
             </div>
           </div>
         </div>
