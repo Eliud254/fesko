@@ -1,0 +1,19 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#heroGrad)"/>
+  <text x="600" y="300" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">
+    Professional Driving School
+  </text>
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white" opacity="0.9">
+    NTSA Certified • Modern Fleet • Expert Instructors
+  </text>
+  <circle cx="300" cy="450" r="80" fill="white" opacity="0.1"/>
+  <circle cx="900" cy="450" r="80" fill="white" opacity="0.1"/>
+  <text x="300" y="460" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="white">🚗</text>
+  <text x="900" y="460" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="white">🎓</text>
+</svg>
